@@ -26,7 +26,11 @@ public class CarService {
                             if (car.getStatus() == CarStatusEnum.MOVING) slowDown(car, road);
                         }
                     } else {
-                        car.setStatus(CarStatusEnum.MOVING);
+                        if (car.getCurSpeed() > 0) {
+                            car.setStatus(CarStatusEnum.MOVING);
+                        } else {
+                            car.setStatus(CarStatusEnum.WAITING);
+                        }
                         car.setTimeHardSlowing(car.getTimeHardSlowing() - 1);
                     }
                 }
@@ -95,9 +99,7 @@ public class CarService {
                 car.setStatus(CarStatusEnum.SLOWING_DOWN);
             }
         }
-        if (car.getCurSpeed() == 0) {
-            car.setStatus(CarStatusEnum.WAITING);
-        }
+        if (car.getCurSpeed() == 0) car.setStatus(CarStatusEnum.WAITING);
     }
 
     private void speedUp(Car car, Road road) {
