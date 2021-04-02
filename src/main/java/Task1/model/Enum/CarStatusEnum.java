@@ -1,6 +1,7 @@
-package Task1.Model.Enum;
+package Task1.model.Enum;
 
 public enum CarStatusEnum {
+
     MOVING,
     FINISHED_MOVING,
     CRASHED,
@@ -8,4 +9,5 @@ public enum CarStatusEnum {
     SPEEDING_UP,
     WAITING,
     HARD_SLOWING_DOWN
+
 }
